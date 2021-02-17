@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>spellhelpgroup</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>spellSyntax</name>
+				<script>spellname=(matches[2])
+splp={}
+splp["magic missile"]=8
+splp["ventriloquate"]=5
+splp["detect magic"]= 		8
+splp["detect invisibility"]=	 11
+splp["chill touch"]= 	7
+splp["armour"]=16
+splp["create light"]=8
+splp["locate magic"]=12
+splp["burning hands"]= 	11
+splp["shroud"]=16
+splp["locate"]=16
+splp["find the path"]=11
+splp["earthquake"]=16
+splp["shocking grasp"]=11
+splp["call familiar"]=11
+splp["teleport"]=16
+splp["night vision"]=11
+splp["lightning bolt"]=16
+splp["block door"]=11
+splp["control weather"]=16
+splp["store"]=16
+splp["colour spray"]=16
+splp["locate life"]=16
+splp["call lightning"]=16
+splp["enchant"]=22
+splp["shield"]=16
+splp["scry"]=16
+splp["charm"]=16
+splp["sleep"]=16
+splp["fireball"]=16
+splp["identify"]=16
+splp["dispel magic"]=22
+splp["watch room"]=10
+splp["silence"]=11
+splp["portal"]=22
+
+--cleric spells		rdell	hlond	flond	druid 	minbrethtbad	lorien
+splp["detect evil"]=8
+splp["cure light"]=12
+splp["create water"]=12
+splp["detect poison"]=8
+splp["create food"]=12
+splp["smother"]=9
+splp["cure blindness"]=12
+splp["protection from evil"]=12
+splp["bless"]=12
+splp["cure serious"]=12
+splp["blindness"]=18
+splp["cure disease"]=9
+splp["strength"]=18
+splp["sense life"]=9
+splp["summon"]=18
+splp["poison"]=12
+splp["cure critic"]=12
+splp["remove poison"]=12
+splp["breath of briskness"]=18
+splp["curse"]=12
+splp["divination"]=18
+splp["word of recall"]=23
+splp["dispel evil"]=18
+splp["remove curse"]=12
+splp["energy drain"]=18
+splp["heal"]=18
+splp["transfer"]=23
+splp["fear"]=18
+splp["harm"]=18
+splp["break door"]=12
+-- splp["hold 		-	-	-	- 	-	-	-"
+splp["sanctuary"]=25</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^Syntax\s\s\s\s\s\s\:\scast\s\'(.+)\'(.*)</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>spellLevel</name>
+				<script>spll=tonumber(matches[3])
+--echotest(spll.." bl blb")</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^Level(.+)\sLevel\s(.+)$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>spellNextLine</name>
+				<script>selectString(matches[1], 1)
+replace("")
+cinsertText( matches[1] .. "&lt;cyan&gt; practice on level "..spll+math.floor(splp[spellname]/3 - 1.3).."&lt;grey&gt;" )</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^Class       : (Cleric|Magic\sUser)$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+</MudletPackage>
